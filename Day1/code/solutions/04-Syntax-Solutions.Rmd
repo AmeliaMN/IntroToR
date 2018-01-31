@@ -158,8 +158,7 @@ str(babynames) #phew!
 
 ## Your turn 
 ```{r}
-amelia <- babynames %>%
-    filter(name=="Amelia" & sex == "F")
+amelia <- filter(babynames, name=="Amelia" & sex == "F")
 
 ggplot(amelia) + geom_point(aes(x=year, y=n))
 
