@@ -1,0 +1,167 @@
+---
+title: "Syntax - Solutions"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Syntax in ggplot2
+There are many ways to "say" the same thing in ggplot2
+
+```{r}
+ggplot(data = bechdel) +
+  geom_point(mapping = aes(x = budget, y = domgross)) +
+  geom_smooth(mapping = aes(x= budget, y = domgross))
+```
+
+```{r}
+ggplot(data = bechdel, aes(x= budget, y = domgross)) +
+  geom_point() +
+  geom_smooth()
+```
+
+```{r}
+ggplot(bechdel) + 
+  geom_point(aes(x = budget, y = domgross))
+ggplot(bechdel, aes(x = budget, y = domgross)) +
+  geom_point()
+ggplot(bechdel, aes(x= budget)) + 
+  geom_point(aes(y = domgross))
+ggplot() + 
+  geom_point(bechdel, aes(x = budget, y = domgross))
+```
+
+Override the global mappings
+
+```{r}
+ggplot(data = bechdel, aes(x= budget, y = domgross)) +
+  geom_point(aes(color=clean_test)) +
+  geom_smooth()
+```
+
+## Subsetting
+
+## The dplyr way
+To use the dplyr package, we need to load it.
+
+```{r setup}
+library(dplyr)
+```
+
+
+
+## Beatles data
+Let's make a toy dataset to play with. 
+
+```{r}
+beatles <- data.frame(
+  name = c("John", "Paul", "George", "Ringo"),
+  birth = c(1940, 1942, 1943, 1940), 
+  instrument = c("guitar", "bass", "guitar", "drums")
+)
+```
+
+## Select
+Select is a way to extract columns from dataframes
+
+```{r}
+select(beatles, name, birth)
+```
+
+## Your Turn
+Select just the instrument column
+
+```{r}
+select(beatles, instrument)
+```
+
+## Base R
+```{r}
+beatles[2,3]
+beatles[ ,"birth"]
+beatles[ ,c("name","birth")]
+beatles$birth
+```
+
+## Filter
+
+```{r}
+filter(beatles, name == "George")
+```
+
+## Quiz
+
+```{r}
+x <- c(1, 2, 3, 4, 5)
+x > 3
+x >= 3
+x < 3
+x <= 3
+x == 3
+x != 3
+x = 3
+```
+
+## Your turn
+
+```{r}
+filter(beatles, birth==1940)
+```
+
+
+
+
+## More than one condition
+```{r}
+filter(beatles, birth==1940, instrument == "guitar")
+filter(beatles, birth==1940 & instrument == "guitar")
+```
+
+## Base R
+
+```{r}
+beatles[c(FALSE,TRUE,TRUE,FALSE), ]
+beatles[beatles$birth == 1940, ]
+```
+
+## Baby names data
+Names with at least 5 uses in a particular year, from the Social Security Administration. 
+
+```{r}
+library(babynames)
+```
+
+## Your turn
+Do you remember how to view a dataset?
+
+```{r}
+filter(babynames, prop >= 0.08)
+filter(babynames, name == "Sea")
+filter(babynames, is.na(n))
+filter(babynames, name == "Sea", sex == "F")
+filter(babynames, n == 5 | n == 6, year == 1880)
+filter(babynames, name %in% c("Acura", "Lexus", "Yugo"))
+```
+
+## Saving results
+
+```{r}
+filter(babynames, name %in% c("Acura", "Lexus", "Yugo"))
+carnames <- filter(babynames, name %in% c("Acura", "Lexus", "Yugo"))
+```
+
+```{r}
+babynames <- filter(babynames, name %in% c("Acura", "Lexus", "Yugo")) # dangerous!
+rm(babynames)
+str(babynames) #phew!
+```
+
+## Your turn 
+```{r}
+amelia <- babynames %>%
+    filter(name=="Amelia" & sex == "F")
+
+ggplot(amelia) + geom_point(aes(x=year, y=n))
+
+ggplot(amelia) + geom_line(aes(x=year, y=n))
+```

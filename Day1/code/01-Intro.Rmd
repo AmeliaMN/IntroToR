@@ -1,0 +1,61 @@
+---
+title: "R Structures"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Arithmetic and algebra
+
+Let's start with the same arithmetic we were just doing in the Console. Notice that the math is surrounded by some special characters above and below, and has a grey background. This is RStudio's way of showing you the difference between an area to write text (here!) and an area where code is stored (called a code chunk).
+
+```{r}
+5 + 5
+4 - 1
+1 * 2
+4 ^ 2
+```
+
+Try executing this chunk by clicking the green *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+We can do the same with the algebra we just saw,
+
+```{r}
+a <- 1
+b <- 2
+a + b
+A <- 3
+a + b - A
+```
+
+## Functions 
+
+```{r}
+round(3.1415)
+factorial(3)
+sqrt(9)
+
+factorial(round(2.0015) + 1)
+```
+
+
+```{r}
+the_answer <- 42
+more_pi <- round(3.1415) + 1
+factorial(more_pi)
+```
+
+What happened in your Environment when you ran that code? 
+
+## "knitted" HTML version
+
+This functionality is supported by an R package called `knitr`, so we often talk about "knitted" versions of RMarkdown and R Notebook documents. 
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it. This makes a nice, polished report of your work to share.
+
+Click the *Preview* button at the top of this document or press *Cmd+Shift+K* (*Ctrl+Shift+K* on Windows) to preview the HTML file. Try clicking *Preview* now.
+
+## More on Notebooks
+
+We'll be covering many more details about notebooks as we progress, but ask a TA if you have pressing questions right now. 
+

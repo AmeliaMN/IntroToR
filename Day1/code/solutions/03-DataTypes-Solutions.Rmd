@@ -1,0 +1,134 @@
+---
+title: "Data Types - Solutions"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+## WorldPhones
+
+## Your turn 1
+
+```{r}
+WorldPhones
+```
+
+
+## Vectors and matrices
+
+```{r}
+vec <- c(1, 2, 3, 10, 100)
+vec
+```
+
+```{r}
+mat <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2)
+mat
+
+matrix(c(1, 2, 3, 4, 5, 6), nrow = 2)
+matrix(c(1, 2, 3, 4, 5, 6), nrow = 3)
+```
+
+## Math with vectors and matrices
+
+```{r}
+vec + 4
+vec * 4
+vec * vec # element-wise multiplication
+
+vec %*% vec # matrix multiplication (inner)
+vec %o% vec # matrix multiplication (outer)
+
+mat
+t(mat) # transpose
+```
+
+## Arrays
+
+```{r}
+array(c(1, 2, 3, 4, 5, 6), dim = c(2, 2, 3))
+```
+
+## Data types
+Numeric
+```{r}
+1 + 1
+3000000
+class(0.00001)
+```
+
+Character
+```{r}
+"hello"
+class("hello")
+```
+
+```{r}
+"hello" + "world"
+nchar("hello")
+paste("hello", "world")
+```
+
+Logical
+```{r}
+3 > 4
+class(TRUE)
+class(T)
+```
+
+Factor (danger zone!)
+```{r}
+fac <- factor(c("a", "b", "c"))
+fac
+class(fac)
+```
+
+## Your Turn 2 
+
+Make a vector that contains the number 1, the letter R, and the logical TRUE
+
+```{r}
+vec <- c(1, "R", TRUE)
+class(vec)
+```
+
+## Quiz
+What type of data will result?
+
+```{r}
+class(c(5, "two"))
+class(c(TRUE, "a"))
+class(c(1, "TRUE"))
+class(TRUE + 5)
+```
+
+## Lists
+
+```{r}
+lst <- list(1, "R", TRUE)
+class(lst)
+```
+
+## Data frames
+```{r}
+df <- data.frame(c(1, 2, 3), 
+ c("R","S","T"), c(TRUE, FALSE, TRUE))
+class(df)
+```
+
+## Naming 
+```{r}
+nvec <- c(one = 1, two = 2, three = 3)
+nlst <- list(one = 1, two = 2, many = c(3, 4, 5))
+```
+
+```{r}
+ndf <- data.frame(numbers = c(1, 2, 3), 
+          letters = c("R","S","T"), 
+          logic = c(TRUE, FALSE, TRUE))
+```
+
+```{r}
+names(ndf)
+names(nvec)
+```

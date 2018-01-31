@@ -1,0 +1,124 @@
+---
+title: "Visualization - solutions"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Setup
+
+The first chunk in an R Notebook is usually titled "setup," and by convention includes the R packages you want to load. Remember, in order to use an R package you have to run some `library()` code every session. Execute these lines of code to load the packages. 
+
+```{r setup}
+library(ggplot2)
+library(fivethirtyeight)
+```
+
+## Bechdel test data
+
+We're going to start by playing with data collected by the website FiveThirtyEight on movies and [the Bechdel test](https://en.wikipedia.org/wiki/Bechdel_test). 
+
+To begin, let's just preview our data. There are a couple ways to do that. One is just to type the name of the data and execute it like a piece of code. 
+
+```{r}
+bechdel
+```
+
+Notice that you can page through to see more of the dataset. 
+
+Sometimes, people prefer to see their data in a more spreadsheet-like format, and RStudio provides a way to do that. Go to the Console and type `View(bechdel)` to see the data preview. 
+
+(An aside-- `View` is a special function. Since it makes something happen in the RStudio interface, it doesn't work properly in R Notebooks. Most R functions have names that start with lowercase letters, so the uppercase "V" is there to remind you of its special status.)
+
+
+
+## Visualizing data with ggplot2
+
+## Your Turn 1
+
+Run the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!
+
+```{r}
+ggplot(data = bechdel) +
+  geom_point(mapping = aes(x = budget, y = domgross))
+```
+
+## Your Turn 2
+
+Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.  
+
+```{r}
+ggplot(data = bechdel) +
+  geom_point(mapping = aes(x = budget, y = domgross, color=clean_test))
+```
+
+## Your Turn 3
+
+Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
+
+```{r}
+ggplot(bechdel) + geom_boxplot(aes(clean_test, budget))
+```
+
+## Your Turn 4
+
+Make a histogram of the `budget` variable from `bechdel`.
+
+```{r}
+ggplot(bechdel) + geom_histogram(aes(x=budget))
+```
+
+## Your Turn 5
+Try to find a better binwidth for `budget.'
+
+```{r}
+ggplot(data = bechdel) +
+  geom_histogram(mapping = aes(x = budget), binwidth=10000000)
+```
+
+## Your Turn 6
+
+Make a density plot of `budget` colored by `clean_test`.
+
+```{r}
+ggplot(data = bechdel) +
+  geom_density(mapping = aes(x = budget, color=clean_test))
+```
+
+
+## Your Turn 7
+
+Predict what this code will do. Then run it.
+
+```{r}
+ggplot(bechdel) + 
+  geom_point(aes(budget, domgross)) +
+  geom_smooth(aes(budget, domgross))
+```
+
+## Your Turn 8
+
+What does `getwd()` return?
+
+```{r}
+getwd()
+```
+
+## Your Turn 9
+
+Save the last plot and then locate it in the files pane.
+
+```{r}
+ggsave()
+```
+
+***
+
+# Take aways
+
+You can use this code template to make thousands of graphs with **ggplot2**.
+
+```{r eval = FALSE}
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
