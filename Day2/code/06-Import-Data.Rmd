@@ -1,0 +1,128 @@
+---
+title: "Import data"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup}
+library(readr)
+library(skimr)
+library(dplyr)
+```
+
+## Your Turn 1
+After you've loaded the data, create a chunk (do you remember how?) and paste the code into it.
+
+## Skimming
+To get a sense of a dataset, you want to `skim()` it. 
+
+```{r}
+GSS %>% skim()
+```
+
+## Changing skimr defaults
+
+```{r}
+skim_with(integer = list(p25 = NULL, p75=NULL))
+# skim_with_defaults()
+```
+
+## Your turn
+How is the `skim()` output different?
+
+## Reading data with read.csv()
+How is the `skim()` output different?
+
+## Parsing
+
+```{r}
+nimbus <- read_csv("projects/data/nimbus.csv")
+```
+
+
+## Writing files
+
+```{r, eval=FALSE}
+write_csv(nimbus, file = "nimbus2.csv")
+```
+
+## More information on importing data
+
+
+## readr
+
+The **readr** R package contains simple, consistent functions for importing data saved as flat file documents. readr functions offer an alternative to base R functions that read in flat files. 
+
+readr supplies several related functions, each designed to read in a specific flat file format. 
+
+Function       | Reads
+-------------- | --------------------------
+`read_csv()`   | Comma separated values
+`read_csv2()`  | Semi-colon separate values
+`read_delim()` | General delimited files
+`read_fwf()`   | Fixed width files
+`read_log()`   | Apache log files
+`read_table()` | Space separated files
+`read_tsv()`   | Tab delimited values
+
+Here, we will focus on the `read_csv()` function, but the other functions work in a similar way. In most cases, you can use the syntax and arguments of `read_csv()` when using the other functions listed above.
+
+When you use `read_csv()`, `read_csv()` tries to match each column of input to one of the basic data types in R. `read_csv()` generally does a good job, but here the initial presence of the character strings `.` caused `read_csv()` to misidentify the contents of the `ozone` column. You can now correct this with R's `as.numeric()` function, or you can read the data in again, this time instructing `read_csv()` to parse the column as numbers.
+
+To do this, add the argument `col_types` to `read.csv()` and set it equal to a list. Add a named element to the list for each column you would like to manually parse. The name of the element should match the name of the column you wish to parse. So for example, if we wish to parse the `ozone` column into a specifc data type, we would begin by inserting the argument:
+
+```{r eval = FALSE}
+nimbus <- read_csv("nimbus.csv", na = ".",
+                   col_types = list(ozone = #something)
+```
+
+To complete the code, set `ozone` equal to one of the functions below, each function instructs `read_csv()` to parse `ozone` as a specific type of data.
+
+Type function     | Data Type
+----------------- | -----------------------------------------
+`col_character()` | character
+`col_date()`      | Date
+`col_datetime()`  | POSIXct (date-time)
+`col_double()`    | double (numeric)
+`col_factor()`    | factor
+`col_guess()`     | let readr geuss (default)
+`col_integer()`   | integer
+`col_logical()`   | logical
+`col_number()`    | numbers mixed with non-number characters
+`col_numeric()`   | double or integer
+`col_skip()`      | do not read this column
+`col_time()`      | time
+
+In our case, we would use the `col_double()` function to ensure that `ozone` is read a sa double (that is numeric) column.
+
+## Writing data
+
+readr also contains functiomns for saving data. These functions parallel the read functions and each save a data frame or tibble in a specific file format.
+
+Function            | Writes
+------------------- | ----------------------------------------
+`write_csv()`       | Comma separated values
+`write_excel_csv()` | CSV that you plan to open in Excel
+`write_delim()`     | General delimited files
+`write_file()`      | A single string, written as is
+`write_lines()`     | A vector of strings, one string per line
+`write_tsv()`       | Tab delimited values
+
+To use a write function, first give it the name of the data frame to save, then give it a filepath from your wqorking directory to the location where you would like to save the file. This filepath should end in the name of the new file. So we can save the clean `nimbus` data set as a csv in our working directory with 
+
+
+# Other packages
+
+Consider these packages for other types of data:
+
+Package  | Reads
+-------- | -----
+haven    | SPSS, Stata, and SAS files
+readxl   | excel files (.xls, .xlsx)
+jsonlite | json
+xml2     | xml
+httr     | web API's
+rvest    | web pages (web scraping)
+DBI      | databases
+sparklyr | data loaded into spark

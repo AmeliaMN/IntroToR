@@ -1,0 +1,111 @@
+---
+title: "Models - solutions"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, message=FALSE}
+library(dplyr)
+library(modelr)
+library(ggplot2)
+library(skimr)
+library(broom)
+wages <- heights %>% filter(income > 0)
+```
+
+## Wages data
+```{r}
+wages %>% skim()
+wages %>% 
+  ggplot(aes(log(income))) + geom_histogram(binwidth = 0.25)
+```
+
+## Linear models
+
+```{r}
+mod_e <- lm(log(income) ~ education, data = wages)
+
+```
+
+## Your Turn
+
+Fit the model on the slide and then examine the output. What does it look like?
+
+```{r}
+mod_e
+summary(mod_e)
+names(mod_e)
+mod_e$coefficients
+```
+
+## Plotting models with base R
+```{r}
+plot(mod_e)
+plot(mod_e, which=c(1,2))
+```
+
+## With ggplot2
+
+```{r}
+ggplot(mod_e, aes(x=.fitted, y=.resid)) + geom_point() + geom_smooth(se = FALSE)
+
+ggplot(mod_e, aes(sample = .resid)) + geom_qq()
+```
+
+
+## Broom
+```{r}
+mod_e %>% tidy()
+mod_e %>% glance()
+mod_e %>% augment()
+mod_e %>% augment(data = wages)
+```
+
+## Your Turn
+
+Model `log(income)` against `education` _and_ `height`. Do the coefficients change?
+
+```{r}
+mod_eh <- lm(log(income) ~ education + height, data = wages)
+
+mod_eh %>% 
+  tidy()
+```
+
+## Your Turn
+
+Model `log(income)` against `education` and `height` and `sex`. Can you interpret the coefficients?
+
+```{r}
+mod_ehs <- lm(log(income) ~ education + height + sex, data = wages)
+
+mod_ehs %>% 
+  tidy()
+```
+
+## Your turn
+Model log(income) against height. Then use broom and dplyr functions to extract:
+The coefficient estimates and their related statistics
+The adj.r.squared and p.value for the overall model
+
+```{r}
+
+```
+
+## Multivariate regression
+
+```{r}
+```
+
+***
+
+# Take Aways
+
+* Use `glance()`, `tidy()`, and `augment()` from the **broom** package to return model values in a data frame.
+
+* Use `add_predictions()` or `gather_predictions()` or `spread_predictions()` from the **modelr** package to visualize predictions.
+
+* Use `add_residuals()` or `gather_residuals()` or `spread_residuals()` from the **modelr** package to visualize residuals.
+
+
