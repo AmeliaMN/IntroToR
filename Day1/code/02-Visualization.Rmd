@@ -51,12 +51,19 @@ ggplot(data = bechdel) +
   geom_point(mapping = aes(x = budget, y = domgross))
 ```
 
+## Set vs map
+
+```{r}
+ggplot(bechdel) + 
+    geom_point(mapping = aes(x = budget, y = domgross), color="blue")
+```
+
 ## Your Turn 3
 
 Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
 
 ```{r}
-ggplot(bechdel) + geom_point(aes(clean_test, budget))
+ggplot(data = bechdel) + geom_point(aes(x = clean_test, y = budget))
 ```
 
 ## Your Turn 4
@@ -68,7 +75,7 @@ Make a histogram of the `budget` variable from `bechdel`.
 ```
 
 ## Your Turn 5
-Try to find a better binwidth for `budget.'
+Try to find a better `binwidth` for `budget`.
 
 ```{r}
 
@@ -104,7 +111,7 @@ What does `getwd()` return?
 
 ## Your Turn 9
 
-Save the last plot and then locate it in the files pane.
+Save the last plot and then locate it in the files pane. If you run your `ggsave()` code inside this notebook, the image will be saved in the same directory as your .Rmd file (likely, project -> code), but if you run `ggsave()` in the Console it will be in your working directory. 
 
 ```{r}
 

@@ -63,8 +63,11 @@ Character
 class("hello")
 ```
 
-```{r}
+```{r, error=TRUE}
 "hello" + "world"
+```
+
+```{r}
 nchar("hello")
 paste("hello", "world")
 ```
@@ -83,7 +86,7 @@ fac
 class(fac)
 ```
 
-## Your Turn 2 
+## Your turn 2 
 
 Make a vector that contains the number 1, the letter R, and the logical TRUE
 

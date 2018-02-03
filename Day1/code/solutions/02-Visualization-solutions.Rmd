@@ -50,6 +50,21 @@ Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.
 ```{r}
 ggplot(data = bechdel) +
   geom_point(mapping = aes(x = budget, y = domgross, color=clean_test))
+
+ggplot(bechdel) + 
+  geom_point(mapping = aes(x = budget, y = domgross, size=clean_test))
+ggplot(bechdel) + 
+  geom_point(mapping = aes(x = budget, y = domgross, shape=clean_test))
+ggplot(bechdel) + 
+  geom_point(mapping = aes(x = budget, y = domgross, alpha=clean_test))
+
+```
+
+## Set vs map
+
+```{r}
+ggplot(bechdel) + 
+    geom_point(mapping = aes(x = budget, y = domgross), color="blue")
 ```
 
 ## Your Turn 3
@@ -57,7 +72,9 @@ ggplot(data = bechdel) +
 Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
 
 ```{r}
-ggplot(bechdel) + geom_boxplot(aes(clean_test, budget))
+ggplot(data = bechdel) + geom_point(aes(x = clean_test, y = budget))
+
+ggplot(data = bechdel) + geom_boxplot(aes(x = clean_test, y = budget))
 ```
 
 ## Your Turn 4
@@ -65,11 +82,12 @@ ggplot(bechdel) + geom_boxplot(aes(clean_test, budget))
 Make a histogram of the `budget` variable from `bechdel`.
 
 ```{r}
-ggplot(bechdel) + geom_histogram(aes(x=budget))
+ggplot(bechdel) + 
+  geom_histogram(aes(x=budget))
 ```
 
 ## Your Turn 5
-Try to find a better binwidth for `budget.'
+Try to find a better binwidth for `budget`.
 
 ```{r}
 ggplot(data = bechdel) +
@@ -81,6 +99,9 @@ ggplot(data = bechdel) +
 Make a density plot of `budget` colored by `clean_test`.
 
 ```{r}
+ggplot(data = bechdel) +
+  geom_density(mapping = aes(x = budget))
+
 ggplot(data = bechdel) +
   geom_density(mapping = aes(x = budget, color=clean_test))
 ```
@@ -106,10 +127,10 @@ getwd()
 
 ## Your Turn 9
 
-Save the last plot and then locate it in the files pane.
+Save the last plot and then locate it in the files pane. If you run your `ggsave()` code inside this notebook, the image will be saved in the same directory as your .Rmd file (likely, project -> code), but if you run `ggsave()` in the Console it will be in your working directory. 
 
 ```{r}
-ggsave()
+ggsave("my-plot.png")
 ```
 
 ***

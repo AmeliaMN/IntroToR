@@ -16,7 +16,9 @@ Let's start with the same arithmetic we were just doing in the Console. Notice t
 4 ^ 2
 ```
 
-Try executing this chunk by clicking the green *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+Try executing this chunk by clicking the green *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. These two actions do the same thing-- they run all the lines of code in a chunk, and show you all the output.
+
+You can also run just one line at a time by putting your cursor on a line and pressing *Cmd+Enter*. Then, you'll just see the output for the one line. 
 
 We can do the same with the algebra we just saw,
 
