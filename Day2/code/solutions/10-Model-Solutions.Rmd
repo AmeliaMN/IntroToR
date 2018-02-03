@@ -25,7 +25,6 @@ wages %>%
 
 ```{r}
 mod_e <- lm(log(income) ~ education, data = wages)
-
 ```
 
 ## Your Turn
@@ -62,6 +61,22 @@ mod_e %>% augment()
 mod_e %>% augment(data = wages)
 ```
 
+## Your turn
+Model log(income) against height. Then use broom and dplyr functions to extract:
+The coefficient estimates and their related statistics
+The adj.r.squared and p.value for the overall model
+
+```{r}
+mod_h <- lm(log(income) ~ height, data=wages)
+mod_h %>%
+  tidy()
+mod_h %>%
+  glance() %>%
+  select(p.value, r.squared)
+```
+
+## Multivariate regression
+
 ## Your Turn
 
 Model `log(income)` against `education` _and_ `height`. Do the coefficients change?
@@ -72,6 +87,7 @@ mod_eh <- lm(log(income) ~ education + height, data = wages)
 mod_eh %>% 
   tidy()
 ```
+
 
 ## Your Turn
 
@@ -84,18 +100,29 @@ mod_ehs %>%
   tidy()
 ```
 
-## Your turn
-Model log(income) against height. Then use broom and dplyr functions to extract:
-The coefficient estimates and their related statistics
-The adj.r.squared and p.value for the overall model
+
+## Logistic regression
 
 ```{r}
-
+library(fivethirtyeight)
+data(bechdel)
+bechdel <- bechdel %>%
+  mutate(pass = if_else(binary == "PASS", 0, 1))
 ```
 
-## Multivariate regression
+```{r}
+mod_pass <- glm(pass~budget, data=bechdel, family=binomial)
+summary(mod_pass)
+```
+
+## Your turn
+Model pass against budget, year and domgross_2013. `tidy()` the model output.
 
 ```{r}
+mod_pass2 <- glm(pass~budget + year + domgross_2013, data=bechdel, family=binomial)
+
+mod_pass2 %>%
+  tidy()
 ```
 
 ***

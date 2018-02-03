@@ -7,6 +7,7 @@ editor_options:
 
 ```{r setup}
 library(tidyr)
+library(tibble)
 
 # Toy data
 cases <- tribble(
@@ -39,7 +40,7 @@ x <- tribble(
 names(who) <- stringr::str_replace(names(who), "newrel", "new_rel")
 ```
 
-## Your Turn 1
+## Your turn
 
 On a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: **country**, **year**, **n**
 
@@ -52,7 +53,7 @@ cases %>% gather("year","n", "2011", "2012", "2013")
 cases %>% gather("year","n", -Country)
 ```
 
-## Your Turn 2
+## Your turn
 
 Use `gather()` to reorganize `table4a` into three columns: **country**, **year**, and **cases**.
 
@@ -63,7 +64,7 @@ table4a %>%
   gather(key = "year", value = "n", 2:3, convert = TRUE)
 ```
 
-## Your Turn 3
+## Your turn
 
 On a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: **city**, **large**, **small**
 
@@ -74,13 +75,43 @@ pollution %>% spread(key = size, value = amount)
 pollution %>% spread(size, amount)
 ```
 
-## Your Turn 4
+## Your turn
 
 Use `spread()` to reorganize `table2` into four columns: **country**, **year**, **cases**, and **population**.
 
 ```{r}
 table2 %>% 
   spread(key = type, value = count)
+```
+
+## WorldPhones data
+```{r}
+data(WorldPhones)
+```
+
+Coercion
+
+```{r}
+WorldPhones <- as.data.frame(WorldPhones)
+WorldPhones 
+WorldPhones <- rownames_to_column(WorldPhones)
+WorldPhones
+```
+
+## Your turn
+Use the appropriate function to reorganize WorldPhones into four columns: year, area, and n.
+
+```{r}
+WorldPhones <- WorldPhones %>% 
+    gather(key = "Area", value = "n", -rowname)
+```
+
+## Renaming
+
+```{r}
+library(dplyr)
+WorldPhones <- WorldPhones %>%
+    rename("year" = "rowname")
 ```
 
 ## WHO data
@@ -90,7 +121,7 @@ data(who)
 names(who)
 ```
 
-## Your Turn 5
+## Your turn
 
 Gather the 5th through 60th columns of `who` into a key column: value column pair named **codes** and **n**. Then select just the `county`, `year`, `codes` and `n` variables.
 
@@ -116,7 +147,7 @@ who %>%
   separate(codes, c("new", "type", "sexage"), sep = c(4, 7))
 ```
 
-## Your Turn 6
+## Your turn
 
 Separate the `sexage` column into **sex** and **age** columns.
 

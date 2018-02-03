@@ -1,0 +1,128 @@
+---
+title: "Transform Data"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup}
+library(dplyr)
+library(babynames)
+```
+
+## Your Turn
+
+Use summarise() to compute three statistics about the data:
+
+1. The first (minimum) year in the dataset  
+2. The last (maximum) year in the dataset  
+3. The total number of children represented in the data
+
+```{r}
+
+```
+
+## Your Turn
+
+Extract the rows where `name == "Khaleesi"`. Then use `summarise()` and a summary functions to find:
+
+1. The total number of children named Khaleesi
+2. The first year Khaleesi appeared in the data
+
+```{r}
+
+```
+
+## Your Turn
+
+Use `group_by()`, `summarise()`, and `arrange()` to display the ten most popular names. Compute popularity as the total number of children of a single gender given a name.
+
+```{r}
+
+```
+
+## Your Turn
+
+Use grouping to calculate and then plot the number of children born each year over time.
+
+```{r}
+
+```
+
+## Your Turn
+
+Use `min_rank()` and `mutate()` to rank each row in `babynames` from largest `n` to lowest `n`.
+
+```{r}
+
+```
+
+## Your Turn
+
+Compute each name's rank _within its year and sex_. 
+Then compute the median rank _for each combination of name and sex_, and arrange the results from highest median rank to lowest.
+
+
+
+## Joining data
+
+```{r}
+library(nycflights13)
+```
+
+## Your turn
+Read in the toy datasets band and instrument
+
+
+## Types of joins
+
+```{r}
+band %>% left_join(instrument, by = "name")
+band %>% right_join(instrument, by = "name")
+band %>% full_join(instrument, by = "name")
+band %>% inner_join(instrument, by = "name")
+```
+
+## Your turn
+Which airlines had the largest arrival delays? Work in groups to complete the code below. 
+
+```{r}
+flights %>%
+  drop_na(arr_delay) %>%
+     #something!     %>%
+  group_by(   #something!  ) %>%
+     #something!      %>%
+  arrange(  #something! )       
+```
+
+## Your turn
+Read in the toy dataset instrument2
+
+## What if the names don't match?
+
+```{r}
+band %>% left_join(instrument2, by = c("name" = "artist"))
+```
+
+```{r}
+airports %>% left_join(flights, by = c("faa" = "dest"))
+```
+
+
+# Take aways
+
+* Extract variables with `select()`  
+* Extract cases with `filter()`  
+* Arrange cases, with `arrange()`  
+
+* Make tables of summaries with `summarise()`  
+* Make new variables, with `mutate()`  
+* Do groupwise operations with `group_by()`
+
+* Connect operations with `%>%`  
+
+* Use `left_join()`, `right_join()`, `full_join()`, or `inner_join()` to join datasets
+* Use `semi_join()` or `anti_join()` to filter datasets against each other
+
+
+

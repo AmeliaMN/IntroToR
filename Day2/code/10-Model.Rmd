@@ -11,7 +11,8 @@ library(modelr)
 library(ggplot2)
 library(skimr)
 library(broom)
-wages <- heights %>% filter(income > 0)
+wages <- heights %>% 
+  filter(income > 0)
 ```
 
 ## Wages data
@@ -74,8 +75,6 @@ The adj.r.squared and p.value for the overall model
 
 ## Multivariate regression
 
-```{r}
-```
 
 ## Your Turn
 
@@ -85,6 +84,7 @@ Model `log(income)` against `education` _and_ `height`. Do the coefficients chan
 
 ```
 
+
 ## Your Turn
 
 Model `log(income)` against `education` and `height` and `sex`. Can you interpret the coefficients?
@@ -93,6 +93,23 @@ Model `log(income)` against `education` and `height` and `sex`. Can you interpre
 
 ```
 
+
+## Logistic regression
+
+```{r}
+library(fivethirtyeight)
+data(bechdel)
+bechdel <- bechdel %>%
+  mutate(pass = if_else(binary == "PASS", 0, 1))
+```
+
+```{r}
+mod_pass <- glm(pass~budget, data=bechdel, family=binomial)
+summary(mod_pass)
+```
+
+## Your turn
+Model pass against budget, year and domgross_2013. `tidy()` the model output.
 
 
 ***

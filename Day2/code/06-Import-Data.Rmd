@@ -37,7 +37,7 @@ How is the `skim()` output different?
 ## Parsing
 
 ```{r}
-nimbus <- read_csv("projects/data/nimbus.csv")
+nimbus <- read_csv("project/data/nimbus.csv")
 ```
 
 
