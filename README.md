@@ -1,5 +1,27 @@
 This is the repo for the two-day short course, *"Introduction to R & RStudio"* given at `rstudio::conf(2018)` January 31 and February 1, 2018. 
 
+## About the materials
+
+Description: This is a two-day hands on workshop designed for people who are brand new to R & RStudio and who learn best in person. You will learn the basics of R and data science, and practice using the RStudio IDE (integrated development environment) and R Notebooks. We will have a team of TAs on hand to show you the ropes, and help you out when you get stuck.
+
+These materials were based on Introduction to R (2014), and  <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/rstudio/master-the-tidyverse" rel="dct:source">https://github.com/rstudio/master-the-tidyverse</a> (2017). They are intended to be appropriate for people who have never used R before. 
+
+Both [day1](https://github.com/AmeliaMN/IntroToR/tree/master/Day1) and [day2](https://github.com/AmeliaMN/IntroToR/tree/master/Day2) include folders of code, slides, cheatsheets, and (on day 2) data. Files should be consistently named so you can see the correspondence. For example, [02-Visualization.pdf](https://github.com/AmeliaMN/IntroToR/blob/master/Day1/slides/02-Visualization.pdf) corresponds with [02-Visualization.Rmd](https://github.com/AmeliaMN/IntroToR/blob/master/Day1/code/02-Visualization.Rmd) and [02-Visualization-Solutions.Rmd](https://github.com/AmeliaMN/IntroToR/tree/master/Day1/code/solutions)
+
+Day 1
+- 01-Introduction
+- 02-Visualization
+- 03-DataTypes
+- 04-Syntax
+
+Day 2
+- 06-Import
+- 07-BestPractices
+- 08-Transform
+- 09-Tidy (skipped in the workshop)
+- 10-Model
+- 11-GoingForward
+
 ## Instructor Info
 
 Amelia McNamara
