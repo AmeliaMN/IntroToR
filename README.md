@@ -1,4 +1,4 @@
-This is the repo for the two-day short course, *"Introduction to R & RStudio"* given at `rstudio::conf(2018)` in Jan 2018.
+This is the repo for the two-day short course, *"Introduction to R & RStudio"* given at `rstudio::conf(2018)` January 31 and February 1, 2018. 
 
 ## Instructor Info
 
