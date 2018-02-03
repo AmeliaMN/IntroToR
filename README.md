@@ -9,18 +9,18 @@ These materials were based on Introduction to R (2014), and  <a xmlns:dct="http:
 Both [day1](https://github.com/AmeliaMN/IntroToR/tree/master/Day1) and [day2](https://github.com/AmeliaMN/IntroToR/tree/master/Day2) include folders of code, slides, cheatsheets, and (on day 2) data. Files should be consistently named so you can see the correspondence. For example, [02-Visualization.pdf](https://github.com/AmeliaMN/IntroToR/blob/master/Day1/slides/02-Visualization.pdf) corresponds with [02-Visualization.Rmd](https://github.com/AmeliaMN/IntroToR/blob/master/Day1/code/02-Visualization.Rmd) and [02-Visualization-Solutions.Rmd](https://github.com/AmeliaMN/IntroToR/tree/master/Day1/code/solutions)
 
 Day 1
-- 01-Introduction
-- 02-Visualization
-- 03-DataTypes
-- 04-Syntax
+- 01-Introduction (what is R, what is RStudio)
+- 02-Visualization (visualizing data using `ggplot2`)
+- 03-DataTypes (vectors, matrices, data frames, vector types, coercion)
+- 04-Syntax (selecting rows and columns using base R and `dplyr`-- compare/contrast)
 
 Day 2
-- 06-Import
-- 07-BestPractices
-- 08-Transform
-- 09-Tidy (skipped in the workshop)
-- 10-Model
-- 11-GoingForward
+- 06-Import (importing data using base R and `readr`-- compare/contrast)
+- 07-BestPractices (cleaning up your workspace, ideas for organization, things to read)
+- 08-Transform (more `dplyr`, making many-to-few and many-to-many transformations, joining data)
+- 09-Tidy (skipped in the workshop, covers tidying data using `gather()` and `spread()`)
+- 10-Model (linear modeling, `broom`, logistic regression)
+- 11-GoingForward (installing R and RStudio locally, learning more and getting help)
 
 ## Instructor Info
 
