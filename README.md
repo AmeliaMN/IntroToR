@@ -6,6 +6,10 @@ Description: This is a two-day hands on workshop designed for people who are bra
 
 These materials were based on Introduction to R (2014), and  <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/rstudio/master-the-tidyverse" rel="dct:source">https://github.com/rstudio/master-the-tidyverse</a> (2017). They are intended to be appropriate for people who have never used R before. 
 
+To download the materials, click on "Clone or download" and select "Download ZIP"
+
+![screenshot showing how to download](download_screenshot.png)
+
 Both [day1](https://github.com/AmeliaMN/IntroToR/tree/master/Day1) and [day2](https://github.com/AmeliaMN/IntroToR/tree/master/Day2) include folders of code, slides, cheatsheets, and (on day 2) data. Files should be consistently named so you can see the correspondence. For example, [02-Visualization.pdf](https://github.com/AmeliaMN/IntroToR/blob/master/Day1/slides/02-Visualization.pdf) corresponds with [02-Visualization.Rmd](https://github.com/AmeliaMN/IntroToR/blob/master/Day1/code/02-Visualization.Rmd) and [02-Visualization-Solutions.Rmd](https://github.com/AmeliaMN/IntroToR/tree/master/Day1/code/solutions)
 
 Day 1
