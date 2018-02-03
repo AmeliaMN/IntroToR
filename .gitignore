@@ -3,4 +3,5 @@ Day1/keynotes/*
 keynotes/*
 *.nb.html
 .Rhistory
-.html
+*.html
+*.png
