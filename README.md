@@ -34,7 +34,7 @@ Day 2
 
 Amelia McNamara
 
--   [amcnamara@smith.edu](amcnamara@smith.edu)
+-   [amcnamara@smith.edu](mailto:amcnamara@smith.edu)
 -   [http://www.science.smith.edu/~amcnamara/](http://www.science.smith.edu/~amcnamara/)
 -   @[AmeliaMN](http://www.twitter.com/AmeliaMN)
 
